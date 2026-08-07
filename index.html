@@ -251,7 +251,7 @@
       </h1>
 
       <p class="text-lg text-muted max-w-lg mb-10 leading-relaxed font-light">
-        Get a personalized country recommendation and career roadmap based on your professional profile—not a consultant's sales pitch.
+        Discover the country where your profile has the highest chance of success before paying any consultant, agent, or immigration firm.
       </p>
 
       <div class="flex flex-wrap items-center gap-5">
@@ -260,15 +260,16 @@
           <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
       </div>
+      <p class="text-sm text-muted mt-4 font-medium">Built for professionals. Not for selling immigration services.</p>
 
       <div class="flex items-center gap-10 mt-16 pt-8 border-t border-white/10">
         <div>
-          <div class="font-display text-3xl font-bold text-white"><span class="counter" data-target="42">0</span>+</div>
-          <div class="text-sm text-muted mt-1 font-medium">Countries Analyzed</div>
+          <div class="font-display text-2xl font-bold text-white">Career-First</div>
+          <div class="text-sm text-muted mt-1 font-medium">Recommendations</div>
         </div>
         <div>
-          <div class="font-display text-3xl font-bold text-white"><span class="counter" data-target="1000">0</span></div>
-          <div class="text-sm text-muted mt-1 font-medium">Exclusive Spots</div>
+          <div class="font-display text-2xl font-bold text-white">Independent</div>
+          <div class="text-sm text-muted mt-1 font-medium">Platform</div>
         </div>
         <div>
           <div class="font-display text-3xl font-bold text-white"><span class="counter" data-target="0">0</span></div>
@@ -588,7 +589,7 @@
   
   <div class="max-w-5xl mx-auto relative z-10">
     <div class="text-center mb-16 reveal">
-      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">See What You'll Actually Get</h2>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">See The Decision Report Before You Join</h2>
       <p class="text-muted text-lg max-w-2xl mx-auto">No generic PDFs. You receive a dynamic, personalized intelligence briefing structured to give you absolute clarity.</p>
     </div>
 
@@ -666,6 +667,50 @@
   </div>
 </section>
 
+<!-- SOCIAL PROOF SECTION -->
+<section id="social-proof" class="py-24 px-6 lg:px-10 border-b border-white/5 bg-white/[0.01]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Why professionals are joining</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="spotlight-card reveal p-8">
+        <div class="spotlight-content h-full flex flex-col justify-center">
+          <i class="fa-solid fa-quote-left text-2xl text-secondary mb-4 opacity-50"></i>
+          <p class="text-white text-lg leading-relaxed font-medium">"I've spoken to multiple consultants and still don't know whether Germany or Canada is right for me."</p>
+        </div>
+      </div>
+      <div class="spotlight-card reveal delay-100 p-8">
+        <div class="spotlight-content h-full flex flex-col justify-center">
+          <i class="fa-solid fa-quote-left text-2xl text-primary mb-4 opacity-50"></i>
+          <p class="text-white text-lg leading-relaxed font-medium">"I don't need another sales pitch. I need clarity."</p>
+        </div>
+      </div>
+      <div class="spotlight-card reveal delay-200 p-8">
+        <div class="spotlight-content h-full flex flex-col justify-center">
+          <i class="fa-solid fa-quote-left text-2xl text-tertiary mb-4 opacity-50"></i>
+          <p class="text-white text-lg leading-relaxed font-medium">"This is exactly what I wish existed before spending money on consultations."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER STORY SECTION -->
+<section id="founder-story" class="py-24 px-6 lg:px-10 border-b border-white/5 relative">
+  <div class="max-w-3xl mx-auto text-center reveal">
+    <h2 class="font-display text-3xl lg:text-4xl font-bold mb-10">Why We Built Abroad Career</h2>
+    <div class="text-muted text-lg leading-relaxed space-y-6">
+      <p>We noticed a pattern.</p>
+      <p>Professionals weren't lacking information.<br>They were drowning in it.</p>
+      <p>Different consultants gave different answers.<br>YouTube said one thing.<br>Forums said another.</p>
+      <p>Yet nobody was helping people answer one simple question:</p>
+      <p class="text-xl text-white font-display font-bold py-4">"Which country is actually right for me?"</p>
+      <p>Abroad Career was created to provide independent, data-backed career guidance before anyone spends money on the wrong pathway.</p>
+    </div>
+  </div>
+</section>
+
 <!-- EARLY ACCESS FORM (Premium UI) -->
 <section id="early-access" class="py-32 px-6 lg:px-10 relative flex items-center justify-center">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] pointer-events-none"></div>
@@ -680,35 +725,38 @@
       <!-- Glow decoration -->
       <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/30 blur-[60px] rounded-full"></div>
       
+      <!-- Inline error message container -->
+      <div id="formError" class="hidden mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm relative z-10"></div>
+
       <form id="earlyAccessForm" class="relative z-10">
         <div id="formFields" class="flex flex-col gap-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-2">
               <label class="text-xs font-semibold tracking-wider text-muted uppercase">Full Name</label>
-              <input required type="text" placeholder="e.g. Ananya Sharma" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
+              <input required id="name" type="text" placeholder="e.g. Ananya Sharma" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold tracking-wider text-muted uppercase">Email Address</label>
-              <input required type="email" placeholder="you@company.com" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
+              <input required id="email" type="email" placeholder="you@company.com" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
             </div>
           </div>
           
           <div class="space-y-2">
             <label class="text-xs font-semibold tracking-wider text-muted uppercase">Current Profession</label>
-            <input required type="text" placeholder="e.g. Senior Software Engineer" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
+            <input required id="profession" type="text" placeholder="e.g. Senior Software Engineer" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
           </div>
 
           <div class="space-y-2">
-            <label class="text-xs font-semibold tracking-wider text-muted uppercase">What is stopping you from working abroad?</label>
+            <label class="text-xs font-semibold tracking-wider text-muted uppercase">What is your biggest challenge right now?</label>
             <div class="relative">
-              <select required class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer">
+              <select required id="challenge" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer">
                 <option value="" disabled selected class="text-muted">Select your biggest hurdle</option>
-                <option value="Finding the right country">Finding the right country</option>
-                <option value="Don't know eligibility">Don't know eligibility</option>
-                <option value="Finding jobs">Finding jobs</option>
-                <option value="Money">Money</option>
-                <option value="Language">Language</option>
-                <option value="Documentation">Documentation</option>
+                <option value="Choosing the right country">Choosing the right country</option>
+                <option value="Understanding eligibility">Understanding eligibility</option>
+                <option value="Finding sponsored jobs">Finding sponsored jobs</option>
+                <option value="Financial concerns">Financial concerns</option>
+                <option value="Language requirements">Language requirements</option>
+                <option value="Documentation process">Documentation process</option>
                 <option value="Other">Other</option>
               </select>
               <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
@@ -717,13 +765,13 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-shine animate-shine w-full text-white font-bold text-lg py-5 rounded-xl mt-4 shadow-[0_0_40px_rgba(59,130,246,0.3)]">
+          <button type="submit" id="submitBtn" class="btn-shine animate-shine w-full text-white font-bold text-lg py-5 rounded-xl mt-4 shadow-[0_0_40px_rgba(59,130,246,0.3)] cursor-pointer">
             Join the Waitlist
           </button>
           
           <div class="text-center text-xs text-muted/70 flex items-center justify-center gap-2">
-            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            Spots remaining: <span class="font-bold text-white">342 / 1000</span>
+            <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+            <span class="font-medium">Early Access Applications Open</span>
           </div>
         </div>
 
@@ -732,8 +780,8 @@
           <div class="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6 border border-green-500/20">
             <i class="fa-solid fa-check text-4xl text-green-400"></i>
           </div>
-          <h3 class="font-display text-3xl font-bold mb-3">You're on the list.</h3>
-          <p class="text-muted text-lg">Keep an eye on your inbox. We will notify you the moment your Career Compass is ready to use.</p>
+          <h3 class="font-display text-3xl font-bold mb-3">You're officially on the waitlist!</h3>
+          <p class="text-muted text-lg">Keep an eye on your inbox. We'll notify you when Abroad Career launches.</p>
         </div>
       </form>
     </div>
@@ -759,12 +807,18 @@
   </div>
   <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted/50">
     <p>© 2026 Abroad Career. All rights reserved.</p>
-    <div class="flex gap-4">
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+      <a href="#" class="hover:text-white transition-colors">About</a>
+      <a href="#" class="hover:text-white transition-colors">Roadmap</a>
+      <a href="#" class="hover:text-white transition-colors">Contact</a>
       <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
       <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
     </div>
   </div>
 </footer>
+
+<!-- Supabase JavaScript SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <!-- SCRIPTS -->
 <script>
@@ -784,8 +838,8 @@
   });
 
   // Typing Effect
-  const line1 = "Know Your Best Country.";
-  const line2 = "Before Spending a Single Rupee.";
+  const line1 = "Don't Spend Lakhs";
+  const line2 = "Following The Wrong Path Abroad.";
   const el1 = document.getElementById('typedLine1');
   const el2 = document.getElementById('typedLine2');
   
@@ -851,22 +905,85 @@
     });
   });
 
-  // Form Submission
+  // Supabase initialization
+  const supabaseUrl = "https://qpnygezdhmzhwsgpfleh.supabase.co";
+  const supabaseKey = "sb_publishable_DPAyuzmWDYi5wZWAcLiVkA_Pfbwcn42";
+
+  const supabaseClient = supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+  );
+
+  // Form submission & handling
   const form = document.getElementById('earlyAccessForm');
   const formFields = document.getElementById('formFields');
   const successState = document.getElementById('successState');
-  
-  form.addEventListener('submit', (e) => {
+  const formError = document.getElementById('formError');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    // Prevent page refresh
     e.preventDefault();
-    formFields.style.opacity = '0';
-    setTimeout(() => {
-      formFields.classList.add('hidden');
-      successState.classList.remove('hidden');
-      successState.classList.add('flex');
+    
+    // Hide any previous errors
+    formError.classList.add('hidden');
+    formError.textContent = '';
+
+    // Collect field values
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const profession = document.getElementById('profession').value.trim();
+    const challenge = document.getElementById('challenge').value;
+
+    // Loading state: disable button and show loading text
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+
+    try {
+      // Insert submission data into Supabase waitlist table
+      const { data, error } = await supabaseClient
+        .from("waitlist")
+        .insert([
+          {
+            name,
+            email,
+            profession,
+            challenge
+          }
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      // Success handling: log successful insert
+      console.log("Waitlist signup successful", data);
+
+      // Success handling: hide form fields and show success state
+      formFields.style.opacity = '0';
       setTimeout(() => {
-        successState.style.opacity = '1';
-      }, 50);
-    }, 300);
+        formFields.classList.add('hidden');
+        successState.classList.remove('hidden');
+        successState.classList.add('flex');
+        setTimeout(() => {
+          successState.style.opacity = '1';
+        }, 50);
+      }, 300);
+
+      // Reset form fields
+      form.reset();
+
+    } catch (err) {
+      // Error handling: log insert error and display clean inline error message
+      console.error("Waitlist signup failed", err);
+      formError.textContent = 'Something went wrong. Please try again.';
+      formError.classList.remove('hidden');
+    } finally {
+      // Restore button text and state after completion
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    }
   });
 </script>
 </body>
