@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abroad Career Admin</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        body{
+            background:#0b0f19;
+            color:white;
+            font-family:Inter,sans-serif;
+            padding:40px;
+        }
+
+        h1{
+            margin-bottom:30px;
+        }
+
+        .card{
+            background:#131a2b;
+            border:1px solid #222;
+            border-radius:12px;
+            padding:20px;
+            margin-bottom:20px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th,td{
+            padding:12px;
+            text-align:left;
+            border-bottom:1px solid #333;
+        }
+
+        th{
+            color:#999;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Abroad Career Admin</h1>
+
+<div class="card">
+    <h2>Total Signups</h2>
+    <div id="totalUsers">Loading...</div>
+</div>
+
+<div class="card">
+    <h2>Latest Waitlist Entries</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Profession</th>
+                <th>Challenge</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+const supabaseUrl =
+'YOUR_SUPABASE_URL';
+
+const supabaseKey =
+'YOUR_PUBLISHABLE_KEY';
+
+const supabaseClient =
+supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
+
+async function loadData(){
+
+    const { data, error } =
+    await supabaseClient
+    .from('waitlist')
+    .select('*')
+    .order('created_at', {
+        ascending:false
+    });
+
+    if(error){
+        console.error(error);
+        return;
+    }
+
+    document.getElementById('totalUsers')
+    .innerText = data.length;
+
+    const tableBody =
+    document.getElementById('tableBody');
+
+    tableBody.innerHTML = '';
+
+    data.forEach(user => {
+
+        tableBody.innerHTML += `
+            <tr>
+                <td>${user.name || ''}</td>
+                <td>${user.email || ''}</td>
+                <td>${user.profession || ''}</td>
+                <td>${user.challenge || ''}</td>
+                <td>${new Date(user.created_at).toLocaleDateString()}</td>
+            </tr>
+        `;
+    });
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
