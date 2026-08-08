@@ -162,18 +162,17 @@
   }
 
   select option { background: #0A0E17; color: #fff; }
+  #career-calculator select option { background: #0A0E17; color: #fff; }
 
   .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
   .delay-100 { transition-delay: 100ms; }
+  .delay-150 { transition-delay: 150ms; }
   .delay-200 { transition-delay: 200ms; }
   .delay-300 { transition-delay: 300ms; }
 
   .cursor-blink { animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-  
-  .accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-  .accordion-item.active .chevron { transform: rotate(180deg); color: #D4AF37; }
 </style>
 </head>
 
@@ -193,6 +192,7 @@
     </a>
 
     <div class="hidden md:flex items-center gap-10 text-sm text-muted font-medium">
+      <a href="#career-calculator" class="hover:text-gold transition-colors">Calculator</a>
       <a href="#trust" class="hover:text-gold transition-colors">Philosophy</a>
       <a href="#how-it-works" class="hover:text-gold transition-colors">How It Works</a>
       <a href="#features" class="hover:text-gold transition-colors">Platform</a>
@@ -211,6 +211,7 @@
 
   <!-- Mobile menu -->
   <div id="mobileMenu" class="hidden md:hidden glass-panel mx-4 rounded-2xl mb-3 p-6 flex flex-col gap-4 text-sm mt-2 border border-gold/20 shadow-2xl absolute left-0 right-0 z-50">
+    <a href="#career-calculator" class="mobile-link text-muted hover:text-gold py-2">Calculator</a>
     <a href="#trust" class="mobile-link text-muted hover:text-gold py-2">Philosophy</a>
     <a href="#how-it-works" class="mobile-link text-muted hover:text-gold py-2">How It Works</a>
     <a href="#features" class="mobile-link text-muted hover:text-gold py-2">Platform</a>
@@ -287,6 +288,87 @@
         <div>
           <div class="text-xs font-bold text-white">Platform Preview</div>
           <div class="text-[10px] text-muted">In active development</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES-BASED CALCULATOR SECTION -->
+<section id="career-calculator" class="py-28 px-6 lg:px-10 relative border-t border-gold/10 bg-panel/30">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs font-bold tracking-[0.2em] text-gold uppercase bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4 border border-gold/25">Rules-Based Engine</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">See How Your Life Could Change Abroad</h2>
+      <p class="text-muted text-base max-w-xl mx-auto">Compare your profile against our decision matrix to calculate your top country rankings.</p>
+    </div>
+
+    <!-- Calculator Box -->
+    <div class="glass-panel rounded-3xl p-8 md:p-12 border border-gold/20 shadow-2xl reveal delay-150 relative">
+      <form id="careerCalcForm" class="space-y-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="space-y-2">
+            <label class="text-xs font-semibold tracking-wider text-muted uppercase">Current Salary (₹ Lakhs/yr)</label>
+            <input required id="calcSalary" type="number" min="1" max="200" step="0.5" placeholder="e.g. 24" class="w-full bg-black/50 border border-gold/20 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:border-gold focus:bg-black/80 outline-none transition-all text-sm" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-semibold tracking-wider text-muted uppercase">Profession</label>
+            <input required id="calcProfession" type="text" placeholder="e.g. Software Engineer" class="w-full bg-black/50 border border-gold/20 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:border-gold focus:bg-black/80 outline-none transition-all text-sm" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-semibold tracking-wider text-muted uppercase">Years of Experience</label>
+            <input required id="calcExperience" type="number" min="0" max="40" placeholder="e.g. 5" class="w-full bg-black/50 border border-gold/20 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:border-gold focus:bg-black/80 outline-none transition-all text-sm" />
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-semibold tracking-wider text-muted uppercase">Primary Goal</label>
+            <div class="relative">
+              <select required id="calcGoal" class="w-full bg-black/50 border border-gold/20 rounded-xl px-4 py-3.5 text-white focus:border-gold focus:bg-black/80 outline-none transition-all appearance-none cursor-pointer text-sm">
+                <option value="" disabled selected class="text-muted">Select priority</option>
+                <option value="Highest Salary">Highest Salary</option>
+                <option value="Permanent Residency">Permanent Residency</option>
+                <option value="Fastest Move">Fastest Move</option>
+                <option value="Work-Life Balance">Work-Life Balance</option>
+                <option value="Family Friendly">Family Friendly</option>
+              </select>
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/50 text-xs">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-gold w-full text-black font-bold text-base py-4 rounded-xl mt-4 cursor-pointer inline-flex items-center justify-center gap-2">
+          Calculate My Future <i class="fa-solid fa-calculator text-xs"></i>
+        </button>
+      </form>
+
+      <!-- Calculator Results State (Hidden by default) -->
+      <div id="calcResults" class="hidden opacity-0 transition-opacity duration-500 mt-10 pt-10 border-t border-gold/15">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+          <div>
+            <div class="text-[10px] font-mono tracking-widest text-gold uppercase mb-1">DECISION MATRIX RECOMMENDATION</div>
+            <h3 class="font-display text-2xl lg:text-3xl font-bold text-white">Your Top 3 Country Matches</h3>
+            <p class="text-xs text-muted mt-1" id="resProfileSummary">Ranked dynamically based on your profile inputs and goals.</p>
+          </div>
+          <div class="px-4 py-1.5 bg-gold/10 border border-gold/30 rounded-full text-xs font-semibold text-gold self-start sm:self-auto">
+            Algorithmically Ranked
+          </div>
+        </div>
+
+        <!-- Dynamic Rankings Render Container -->
+        <div id="rankingsContainer" class="space-y-6 mb-8">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+        <!-- Premium Callout Card -->
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/30 flex flex-col md:flex-row items-center justify-between gap-6 bg-gold/5">
+          <div>
+            <h4 class="font-display text-xl font-bold text-white mb-1">Want a complete personalized country report?</h4>
+            <p class="text-xs text-muted">Unlock deep-dive visa pathways, salary ceilings, and step-by-step timelines.</p>
+          </div>
+          <a href="#early-access" class="btn-gold text-black font-bold text-sm px-6 py-3.5 rounded-xl whitespace-nowrap inline-flex items-center gap-2">
+            Unlock Full Report <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -794,6 +876,247 @@
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
     });
+  });
+
+  // ==========================================
+  // RULES-BASED RECOMMENDATION ENGINE (PURE JS)
+  // ==========================================
+
+  const countryProfiles = {
+    "Germany": {
+      name: "Germany",
+      code: "DE",
+      symbol: "€",
+      baseSalary: 52000,
+      salaryMultiplier: 2100,
+      savingsRate: 0.25,
+      houseBaseYears: 7.5,
+      cars: ["Volkswagen Golf", "BMW 3 Series", "Porsche Macan"],
+      goalScores: {
+        "Highest Salary": 78,
+        "Permanent Residency": 94, // Fast EU Blue Card
+        "Fastest Move": 96,        // Opportunity Card / Job Seeker
+        "Work-Life Balance": 95,   // 30 days leave, strict limits
+        "Family Friendly": 88
+      },
+      professions: { tech: 18, engineering: 20, healthcare: 15, finance: 10, other: 10 },
+      advantage: "Accelerated EU PR in 21-27 months & zero tuition state universities."
+    },
+    "Netherlands": {
+      name: "Netherlands",
+      code: "NL",
+      symbol: "€",
+      baseSalary: 56000,
+      salaryMultiplier: 2300,
+      savingsRate: 0.23,
+      houseBaseYears: 8.5,
+      cars: ["Volvo XC40", "Audi A4", "BMW i4"],
+      goalScores: {
+        "Highest Salary": 94,      // 30% Tax Ruling benefit
+        "Permanent Residency": 82,
+        "Fastest Move": 91,        // Highly Skilled Migrant route
+        "Work-Life Balance": 96,   // Highest part-time/flex workplace culture
+        "Family Friendly": 89
+      },
+      professions: { tech: 20, engineering: 13, healthcare: 10, finance: 18, other: 11 },
+      advantage: "30% Tax Exemption for skilled expats & 95%+ English fluency in business."
+    },
+    "Australia": {
+      name: "Australia",
+      code: "AU",
+      symbol: "A$",
+      baseSalary: 82000,
+      salaryMultiplier: 3600,
+      savingsRate: 0.28,
+      houseBaseYears: 6.5,
+      cars: ["Mazda CX-5", "Tesla Model 3", "BMW X5"],
+      goalScores: {
+        "Highest Salary": 92,
+        "Permanent Residency": 86, // Point-based Subclass 189/190
+        "Fastest Move": 74,        // Points processing queues
+        "Work-Life Balance": 93,   // Outdoor lifestyle & strong wages
+        "Family Friendly": 97      // Ranked #1 for family quality of life
+      },
+      professions: { tech: 15, engineering: 18, healthcare: 20, finance: 12, other: 12 },
+      advantage: "Direct PR paths via Subclass 189/190 & world-leading minimum base pay."
+    },
+    "Canada": {
+      name: "Canada",
+      code: "CA",
+      symbol: "C$",
+      baseSalary: 72000,
+      salaryMultiplier: 2900,
+      savingsRate: 0.20,
+      houseBaseYears: 9.0,
+      cars: ["Honda CR-V", "Volkswagen Tiguan", "Audi Q5"],
+      goalScores: {
+        "Highest Salary": 81,
+        "Permanent Residency": 96, // Express Entry & Provincial Nominees
+        "Fastest Move": 85,
+        "Work-Life Balance": 86,
+        "Family Friendly": 94      // Safe, multicultural & universal public healthcare
+      },
+      professions: { tech: 18, engineering: 14, healthcare: 17, finance: 14, other: 11 },
+      advantage: "Express Entry & PNP streams offering direct PR landing before arrival."
+    }
+  };
+
+  function classifyProfession(professionStr) {
+    const p = professionStr.toLowerCase();
+    if (p.includes("soft") || p.includes("dev") || p.includes("tech") || p.includes("data") || p.includes("ai") || p.includes("product") || p.includes("design") || p.includes("code") || p.includes("cyber") || p.includes("cloud")) {
+      return "tech";
+    }
+    if (p.includes("eng") || p.includes("mech") || p.includes("civil") || p.includes("elec") || p.includes("auto") || p.includes("struct") || p.includes("site")) {
+      return "engineering";
+    }
+    if (p.includes("doc") || p.includes("nurse") || p.includes("health") || p.includes("med") || p.includes("pharma") || p.includes("bio") || p.includes("care")) {
+      return "healthcare";
+    }
+    if (p.includes("fin") || p.includes("bank") || p.includes("acc") || p.includes("audit") || p.includes("tax") || p.includes("invest") || p.includes("trade")) {
+      return "finance";
+    }
+    return "other";
+  }
+
+  const calcForm = document.getElementById('careerCalcForm');
+  const calcResults = document.getElementById('calcResults');
+  const rankingsContainer = document.getElementById('rankingsContainer');
+
+  calcForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Inputs
+    const salaryInLakhs = parseFloat(document.getElementById('calcSalary').value) || 15;
+    const professionRaw = document.getElementById('calcProfession').value.trim();
+    const expYears = parseFloat(document.getElementById('calcExperience').value) || 0;
+    const selectedGoal = document.getElementById('calcGoal').value;
+
+    const profCategory = classifyProfession(professionRaw);
+
+    // Calculate Rules Score for all 4 countries
+    const countryResults = Object.keys(countryProfiles).map(countryKey => {
+      const c = countryProfiles[countryKey];
+
+      // 1. Goal Score (Base 50% weight)
+      const goalScore = c.goalScores[selectedGoal] || 85;
+
+      // 2. Profession Adjustment (0-20 pts)
+      const profScore = c.professions[profCategory] || 10;
+
+      // 3. Experience Adjustment
+      let expBonus = 0;
+      if (expYears < 2) expBonus = 5;
+      else if (expYears <= 5) expBonus = 12;
+      else if (expYears <= 10) expBonus = 18;
+      else expBonus = 15; // Senior/Age penalty in points system counterbalance
+
+      // 4. Salary/Purchasing Power Capability Adjustment
+      let salaryBonus = 5;
+      if (salaryInLakhs > 30) salaryBonus = 12;
+      else if (salaryInLakhs >= 15) salaryBonus = 8;
+
+      // Composite Raw Score Calculation
+      const rawScore = (goalScore * 0.55) + profScore + expBonus + salaryBonus;
+      
+      // Normalize to 72 - 98 range
+      const compatibilityScore = Math.min(98, Math.max(72, Math.round(rawScore)));
+
+      // Dynamic Metrics Calculation
+      const estimatedAnnualSalaryVal = Math.round(c.baseSalary + (salaryInLakhs * c.salaryMultiplier) + (expYears * 2200));
+      const formattedSalary = c.symbol + estimatedAnnualSalaryVal.toLocaleString();
+      
+      const monthlySavingsVal = Math.round((estimatedAnnualSalaryVal / 12) * c.savingsRate);
+      const formattedSavings = c.symbol + monthlySavingsVal.toLocaleString();
+
+      const houseYears = Math.max(4.5, (c.houseBaseYears - (expYears * 0.2) - (salaryInLakhs * 0.04))).toFixed(1);
+      const carAffordable = c.cars[expYears > 8 ? 2 : (expYears >= 3 ? 1 : 0)];
+
+      return {
+        name: c.name,
+        score: compatibilityScore,
+        salary: formattedSalary,
+        savings: formattedSavings,
+        houseYears: houseYears + " Years",
+        car: carAffordable,
+        advantage: c.advantage
+      };
+    });
+
+    // Sort descending by calculated compatibility score
+    countryResults.sort((a, b) => b.score - a.score);
+
+    // Take top 3 countries
+    const top3 = countryResults.slice(0, 3);
+
+    // Render Rankings
+    document.getElementById('resProfileSummary').textContent = 
+      `Profile: ${professionRaw} (${expYears} yrs exp, ₹${salaryInLakhs}L salary) · Priority: ${selectedGoal}`;
+
+    rankingsContainer.innerHTML = top3.map((c, index) => {
+      const isTop = index === 0;
+      const rankBadges = ["#1 BEST MATCH", "#2 STRONGEST ALTERNATIVE", "#3 HIGH POTENTIAL"];
+      const badgeColors = [
+        "bg-gold/20 text-gold border-gold/40",
+        "bg-white/10 text-white/90 border-white/20",
+        "bg-white/5 text-muted border-white/10"
+      ];
+
+      return `
+        <div class="bg-black/40 rounded-2xl p-6 sm:p-8 border ${isTop ? 'border-gold/40 shadow-xl bg-gold/[0.02]' : 'border-gold/10'} relative overflow-hidden transition-all">
+          ${isTop ? '<div class="absolute -top-12 -right-12 w-32 h-32 bg-gold/10 blur-[40px] rounded-full pointer-events-none"></div>' : ''}
+          
+          <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-gold/10 gap-4">
+            <div>
+              <span class="text-[10px] font-mono font-bold tracking-widest px-3 py-1 rounded-full border ${rankBadges[index]} ${badgeColors[index]} inline-block mb-2">
+                ${rankBadges[index]}
+              </span>
+              <h4 class="font-display text-2xl lg:text-3xl font-bold text-white">${c.name}</h4>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="text-right">
+                <div class="text-[10px] uppercase font-semibold text-muted">Compatibility</div>
+                <div class="font-display text-3xl font-bold ${isTop ? 'text-gold' : 'text-white'}">${c.score}%</div>
+              </div>
+              <div class="w-12 h-12 rounded-xl ${isTop ? 'bg-gold/20 border-gold/40 text-gold' : 'bg-white/5 border-white/10 text-white/70'} border flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid ${isTop ? 'fa-crown' : (index === 1 ? 'fa-award' : 'fa-chart-line')}"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-b border-gold/10">
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-1">Est. Annual Salary</div>
+              <div class="font-display text-xl font-bold text-white">${c.salary}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-1">Est. Monthly Savings</div>
+              <div class="font-display text-xl font-bold text-gold">${c.savings}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-1">House Purchase</div>
+              <div class="font-display text-xl font-bold text-white">${c.houseYears}</div>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-muted mb-1">Car Affordability</div>
+              <div class="font-display text-sm font-bold text-white/90 mt-1">${c.car}</div>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center gap-3 text-xs text-muted">
+            <span class="font-semibold text-gold uppercase tracking-wider text-[10px] whitespace-nowrap"><i class="fa-solid fa-circle-check text-gold mr-1"></i> Key Advantage:</span>
+            <span>${c.advantage}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Reveal results smoothly
+    calcResults.classList.remove('hidden');
+    setTimeout(() => {
+      calcResults.style.opacity = '1';
+    }, 50);
+
+    calcResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 
   // Supabase initialization
