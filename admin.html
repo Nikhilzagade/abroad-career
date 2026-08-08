@@ -220,15 +220,12 @@ SUPABASE_KEY
 loadDashboard();
 
 async function loadDashboard(){
-
-const {data,error}=await supabase
+const { data, error } = await supabase
 .from('waitlist')
-.select('*')
-.order('created_at',{ascending:false});
+.select('*');
 
-if(error){
-console.error(error);
-return;
+console.log('DATA:', data);
+console.log('ERROR:', error);
 }
 
 document.getElementById('totalSignups').innerText=data.length;
