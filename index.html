@@ -3,15 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0A0D12" />
 
 <!-- SEO -->
-<title>Abroad Career — The Smartest Way To Plan Your Move Abroad</title>
-<meta name="description" content="Abroad Career is an AI-powered Career Decision Platform. Know your best country before spending a single rupee." />
+<title>Abroad Career — Know Your Best Country Before You Spend a Rupee</title>
+<meta name="description" content="Abroad Career is an independent, AI-assisted career decision platform. Get a data-grounded read on your best-fit country before you pay a single consultant." />
+<meta property="og:title" content="Abroad Career — The Smartest Way To Plan Your Move Abroad" />
+<meta property="og:description" content="Independent, data-grounded country recommendations for professionals — before you spend on consultants." />
+<meta property="og:type" content="website" />
 
 <!-- Fonts, Tailwind, Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -19,178 +23,160 @@
     theme: {
       extend: {
         colors: {
-          bg: "#02040A",
-          panel: "#0A0F24",
-          primary: "#3B82F6",
-          secondary: "#8B5CF6",
-          tertiary: "#60A5FA",
-          muted: "#94A3B8",
+          bg: "#0A0D12",
+          panel: "#12161D",
+          paper: "#EDE7D9",
+          brass: "#C08A34",
+          brassLight: "#D9A855",
+          teal: "#2F6F70",
+          muted: "#8B93A1",
         },
         fontFamily: {
-          sans: ["Poppins", "sans-serif"],
-          display: ["Raleway", "sans-serif"],
+          sans: ["Inter", "sans-serif"],
+          display: ["Fraunces", "serif"],
+          mono: ["IBM Plex Mono", "monospace"],
         },
-        animation: {
-          'shine': 'shine 4s linear infinite',
-          'float': 'float 6s ease-in-out infinite',
-          'float-delayed': 'float 6s ease-in-out 3s infinite',
-        },
-        keyframes: {
-          shine: {
-            '0%': { backgroundPosition: '200% center' },
-            '100%': { backgroundPosition: '-200% center' },
-          },
-          float: {
-            '0%, 100%': { transform: 'translateY(0)' },
-            '50%': { transform: 'translateY(-10px)' },
-          }
-        }
       },
     },
   };
 </script>
 
 <style>
-  :root { 
-    --bg: #02040A; 
-  }
-  
   body {
-    background-color: var(--bg);
-    color: #FFFFFF;
+    background-color: #0A0D12;
+    color: #EDE7D9;
     overflow-x: hidden;
   }
 
-  ::selection { background: #3B82F6; color: #fff; }
+  ::selection { background: #C08A34; color: #0A0D12; }
 
-  /* Premium Scrollbar */
+  /* Scrollbar */
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #02040A; }
-  ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #334155; }
+  ::-webkit-scrollbar-track { background: #0A0D12; }
+  ::-webkit-scrollbar-thumb { background: #262b34; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #363c47; }
 
-  /* Advanced Mesh Gradient & Noise */
+  /* Keyboard focus, kept visible everywhere */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid #C08A34;
+    outline-offset: 2px;
+  }
+
+  /* Chart-paper grid, very faint */
+  .grid-overlay {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.035;
+    background-image:
+      linear-gradient(rgba(237,231,217,0.7) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(237,231,217,0.7) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
   .mesh-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
-      radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 40%),
-      radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.12), transparent 40%),
-      radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.08), transparent 50%);
-    filter: blur(60px);
+      radial-gradient(circle at 15% 8%, rgba(192,138,52,0.07), transparent 45%),
+      radial-gradient(circle at 85% 65%, rgba(47,111,112,0.09), transparent 45%);
+    filter: blur(70px);
   }
 
   .noise-overlay {
-    position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.04;
+    position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.025;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  /* Glassmorphism Refined */
-  .glass-panel {
-    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-    border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  .chart-panel {
+    background: linear-gradient(160deg, rgba(237,231,217,0.035) 0%, rgba(237,231,217,0.012) 100%);
+    border: 1px solid rgba(237,231,217,0.09);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
   }
 
   .navbar-blur {
-    background: rgba(2, 4, 10, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(10, 13, 18, 0.86);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(237,231,217,0.07);
   }
 
-  /* Typography */
-  .gradient-text {
-    background: linear-gradient(to right, #ffffff, #a5b4fc, #8B5CF6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
-  .gradient-text-blue {
-    background: linear-gradient(to right, #60A5FA, #3B82F6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .btn-brass {
+    background: #C08A34;
+    color: #0A0D12;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .btn-brass:hover {
+    background: #D9A855;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -10px rgba(192,138,52,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
   }
 
-  /* Premium Buttons */
-  .btn-shine {
-    background: linear-gradient(110deg, #3B82F6 0%, #8B5CF6 50%, #3B82F6 100%);
-    background-size: 200% auto;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+  .btn-outline {
+    border: 1px solid rgba(237,231,217,0.18);
+    color: #EDE7D9;
+    transition: border-color 0.2s ease, background 0.2s ease;
   }
-  .btn-shine:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
-  }
+  .btn-outline:hover { border-color: rgba(192,138,52,0.5); background: rgba(237,231,217,0.04); }
 
-  /* Dynamic Spotlight Cards */
-  .spotlight-card {
+  .chart-card {
     position: relative;
-    border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-    transition: transform 0.4s ease, border-color 0.4s ease;
+    border-radius: 0.9rem;
+    background: rgba(237,231,217,0.018);
+    border: 1px solid rgba(237,231,217,0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   }
-  
-  .spotlight-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-    pointer-events: none;
-    z-index: 1;
+  .chart-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(192,138,52,0.35);
+    background: rgba(237,231,217,0.03);
   }
-  
-  .spotlight-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(139, 92, 246, 0.3);
-  }
-  
-  .spotlight-card:hover::before {
-    opacity: 1;
+  .card-index {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    color: rgba(192,138,52,0.85);
   }
 
-  .spotlight-content {
-    position: relative;
-    z-index: 2;
-  }
+  select option { background: #12161D; color: #EDE7D9; }
 
-  /* Select Dropdown override */
-  select option { background: var(--bg); color: #fff; }
-
-  /* Animations */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
   .delay-100 { transition-delay: 100ms; }
   .delay-200 { transition-delay: 200ms; }
   .delay-300 { transition-delay: 300ms; }
 
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
   .cursor-blink { animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-  
-  /* Accordion */
-  .accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-  .accordion-item.active .chevron { transform: rotate(180deg); color: #8B5CF6; }
 
-  /* Dashboard Mockup Inner glow */
-  .dashboard-mockup {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  }
+  /* Accordion (FAQ) */
+  .accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .accordion-item.active .chevron { transform: rotate(180deg); color: #C08A34; }
+  .accordion-item .chevron { transition: transform 0.3s ease; }
+
+  /* Corner brackets on the hero instrument frame */
+  .bracket { position: absolute; width: 22px; height: 22px; border-color: #C08A34; opacity: 0.85; }
+  .bracket-tl { top: -8px; left: -8px; border-top: 2px solid; border-left: 2px solid; }
+  .bracket-tr { top: -8px; right: -8px; border-top: 2px solid; border-right: 2px solid; }
+  .bracket-bl { bottom: -8px; left: -8px; border-bottom: 2px solid; border-left: 2px solid; }
+  .bracket-br { bottom: -8px; right: -8px; border-bottom: 2px solid; border-right: 2px solid; }
+
+  .dashboard-mockup { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.55); }
 </style>
 </head>
 
-<body class="bg-bg text-white antialiased selection:bg-primary/30">
+<body class="bg-bg text-paper antialiased">
 
+<div class="grid-overlay"></div>
 <div class="mesh-bg"></div>
 <div class="noise-overlay"></div>
 
@@ -198,109 +184,119 @@
 <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <nav class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
     <a href="#home" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 relative overflow-hidden">
-        <div class="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-700 -translate-x-full skew-x-12"></div>
-        <i class="fa-solid fa-compass text-white text-lg relative z-10"></i>
+      <div class="w-10 h-10 rounded-lg bg-brass flex items-center justify-center shadow-lg">
+        <i class="fa-solid fa-compass text-bg text-lg" aria-hidden="true"></i>
       </div>
-      <span class="font-display font-bold tracking-[0.15em] text-sm sm:text-base bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">ABROAD CAREER</span>
+      <span class="font-display font-bold tracking-[0.15em] text-sm sm:text-base text-paper">ABROAD CAREER</span>
     </a>
 
-    <div class="hidden md:flex items-center gap-10 text-sm text-muted font-medium">
-      <a href="#trust" class="hover:text-white transition-colors">Philosophy</a>
-      <a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a>
-      <a href="#features" class="hover:text-white transition-colors">Platform</a>
-      <a href="#sample-report" class="hover:text-white transition-colors">Sample Report</a>
+    <div class="hidden md:flex items-center gap-9 text-sm text-muted font-medium">
+      <a href="#trust" class="nav-link hover:text-paper transition-colors">Philosophy</a>
+      <a href="#how-it-works" class="nav-link hover:text-paper transition-colors">How It Works</a>
+      <a href="#features" class="nav-link hover:text-paper transition-colors">Platform</a>
+      <a href="#sample-report" class="nav-link hover:text-paper transition-colors">Sample Report</a>
+      <a href="#faq" class="nav-link hover:text-paper transition-colors">FAQ</a>
     </div>
 
-    <a href="#early-access" class="hidden md:inline-flex btn-shine animate-shine text-white text-sm font-semibold px-6 py-2.5 rounded-full items-center gap-2">
+    <a href="#early-access" class="hidden md:inline-flex btn-brass text-sm font-semibold px-6 py-2.5 rounded-md items-center gap-2">
       Join Early Access
-      <i class="fa-solid fa-arrow-right text-xs"></i>
+      <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
     </a>
 
-    <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-white/80 hover:text-white">
-      <i class="fa-solid fa-bars"></i>
+    <button id="menuBtn" class="md:hidden w-10 h-10 rounded-lg chart-panel flex items-center justify-center text-paper/80 hover:text-paper" aria-label="Toggle menu" aria-expanded="false">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </button>
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobileMenu" class="hidden md:hidden glass-panel mx-4 rounded-2xl mb-3 p-6 flex flex-col gap-4 text-sm mt-2 border border-white/10 shadow-2xl absolute left-0 right-0">
-    <a href="#trust" class="mobile-link text-muted hover:text-white py-2">Philosophy</a>
-    <a href="#how-it-works" class="mobile-link text-muted hover:text-white py-2">How It Works</a>
-    <a href="#features" class="mobile-link text-muted hover:text-white py-2">Platform</a>
-    <a href="#sample-report" class="mobile-link text-muted hover:text-white py-2">Sample Report</a>
-    <a href="#early-access" class="mobile-link btn-shine animate-shine text-white text-center font-semibold px-5 py-3 rounded-xl mt-2">Join Early Access</a>
+  <div id="mobileMenu" class="hidden md:hidden chart-panel mx-4 rounded-2xl mb-3 p-6 flex flex-col gap-4 text-sm mt-2 shadow-2xl absolute left-0 right-0">
+    <a href="#trust" class="mobile-link text-muted hover:text-paper py-2">Philosophy</a>
+    <a href="#how-it-works" class="mobile-link text-muted hover:text-paper py-2">How It Works</a>
+    <a href="#features" class="mobile-link text-muted hover:text-paper py-2">Platform</a>
+    <a href="#sample-report" class="mobile-link text-muted hover:text-paper py-2">Sample Report</a>
+    <a href="#faq" class="mobile-link text-muted hover:text-paper py-2">FAQ</a>
+    <a href="#early-access" class="mobile-link btn-brass text-center font-semibold px-5 py-3 rounded-md mt-2">Join Early Access</a>
   </div>
 </header>
 
 <main class="relative z-10">
 
-<!-- HERO (Increased padding, scale, and max-width layout for larger presence) -->
-<section id="home" class="relative pt-44 pb-32 lg:pt-60 lg:pb-44 px-6 lg:px-12">
-  <div class="max-w-[90rem] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-    
-    <!-- Left: Copy (Expanded width columns for better balance) -->
-    <div class="reveal in-view z-20 lg:col-span-6">
-      <div class="inline-flex items-center gap-2 glass-panel rounded-full px-4 py-1.5 text-xs font-semibold text-secondary mb-8 border border-secondary/20 bg-secondary/5">
-        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-        The World's First Career Decision Engine
+<!-- HERO -->
+<section id="home" class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 px-6 lg:px-10">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+    <!-- Left: Copy -->
+    <div class="reveal in-view z-20">
+      <div class="inline-flex items-center gap-2 chart-panel rounded-full px-4 py-1.5 text-xs eyebrow text-brass mb-8 border border-brass/25">
+        <span class="w-1.5 h-1.5 rounded-full bg-brass"></span>
+        Career Bearing Analysis
       </div>
 
-      <h1 class="font-display text-5xl sm:text-6xl lg:text-[5.2rem] leading-[1.02] font-extrabold tracking-tight mb-8">
-        <span id="typedLine1" class="block text-white/90"></span>
-        <span class="gradient-text" id="typedLine2"></span><span class="cursor-blink text-secondary" id="typeCursor">|</span>
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-[4.25rem] leading-[1.08] font-semibold tracking-tight mb-8">
+        <span id="typedLine1" class="block text-paper"></span>
+        <span class="block text-brass" id="typedLine2"></span><span class="cursor-blink text-brass" id="typeCursor">|</span>
       </h1>
 
-      <p class="text-xl text-muted max-w-xl mb-10 leading-relaxed font-light">
-        Discover the country where your profile has the highest chance of success before paying any consultant, agent, or immigration firm.
+      <p class="text-lg text-muted max-w-lg mb-10 leading-relaxed font-light">
+        Get a clear, data-grounded read on the country where your profile has the strongest odds — before you pay any consultant, agent, or immigration firm.
       </p>
 
       <div class="flex flex-wrap items-center gap-5">
-        <a href="#early-access" class="btn-shine animate-shine text-white font-semibold px-9 py-4.5 rounded-full inline-flex items-center gap-2 text-lg">
+        <a href="#early-access" class="btn-brass font-semibold px-8 py-4 rounded-md inline-flex items-center gap-2">
           Join Early Access
-          <i class="fa-solid fa-arrow-right text-xs"></i>
+          <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+        </a>
+        <a href="#sample-report" class="btn-outline font-medium px-6 py-4 rounded-md inline-flex items-center gap-2">
+          See a sample report
         </a>
       </div>
       <p class="text-sm text-muted mt-4 font-medium">Built for professionals. Not for selling immigration services.</p>
 
-      <div class="flex items-center gap-12 mt-16 pt-8 border-t border-white/10">
+      <div class="flex items-center gap-10 mt-16 pt-8 border-t border-paper/10">
         <div>
-          <div class="font-display text-2xl lg:text-3xl font-bold text-white">Career-First</div>
-          <div class="text-sm text-muted mt-1 font-medium">Recommendations</div>
+          <div class="font-display text-xl font-semibold text-paper">Career-First</div>
+          <div class="text-xs eyebrow text-muted mt-1">Recommendations</div>
         </div>
         <div>
-          <div class="font-display text-2xl font-bold text-white">Independent</div>
-          <div class="text-sm text-muted mt-1 font-medium">Platform</div>
+          <div class="font-display text-xl font-semibold text-paper">Independent</div>
+          <div class="text-xs eyebrow text-muted mt-1">Platform</div>
         </div>
         <div>
-          <div class="font-display text-3xl font-bold text-white"><span class="counter" data-target="0">0</span></div>
-          <div class="text-sm text-muted mt-1 font-medium">Consultant Bias</div>
+          <div class="font-display text-xl font-semibold text-paper">Zero</div>
+          <div class="text-xs eyebrow text-muted mt-1">Consultant Bias</div>
         </div>
       </div>
     </div>
 
-    <!-- Right: Expanded Cinematic Video Showcase -->
-    <div class="relative reveal delay-200 in-view perspective-1000 lg:col-span-6" id="parallaxWrap">
-      <!-- Expanded Glow behind video container -->
-      <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 to-secondary/30 blur-[140px] rounded-full transform -translate-y-10 pointer-events-none"></div>
+    <!-- Right: Instrument panel with hero video -->
+    <div class="relative reveal delay-200 in-view" id="parallaxWrap">
+      <!-- Compass rose motif, behind the panel -->
+      <svg viewBox="0 0 400 400" class="absolute -inset-10 sm:-inset-16 w-[calc(100%+5rem)] sm:w-[calc(100%+8rem)] h-auto pointer-events-none" aria-hidden="true">
+        <circle cx="200" cy="200" r="178" fill="none" stroke="rgba(237,231,217,0.12)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="rgba(237,231,217,0.07)" stroke-width="1"/>
+        <g id="compassTicks"></g>
+        <text x="200" y="26" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="13" fill="rgba(192,138,52,0.85)" letter-spacing="2">N</text>
+      </svg>
 
-      <div class="relative glass-panel rounded-[2.5rem] p-4 sm:p-5 animate-float border border-white/10 bg-panel/40 backdrop-blur-3xl shadow-2xl overflow-hidden">
-        <div class="relative rounded-[2rem] overflow-hidden bg-black aspect-video flex items-center justify-center border border-white/5 shadow-inner">
-          <!-- Cinematic Hero Video -->
-          <video autoplay loop muted playsinline class="w-full h-full object-cover">
+      <div class="relative chart-panel rounded-2xl p-3 sm:p-4 border overflow-hidden">
+        <div class="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center">
+          <video autoplay loop muted playsinline class="w-full h-full object-cover" aria-label="Abroad Career platform preview">
             <source src="abroad_career_hero_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <!-- Subtle Inner Vignette Overlay -->
-          <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,0.6)]"></div>
+          <div class="bracket bracket-tl"></div>
+          <div class="bracket bracket-tr"></div>
+          <div class="bracket bracket-bl"></div>
+          <div class="bracket bracket-br"></div>
         </div>
       </div>
 
-      <!-- Floating Elements -->
-      <div class="absolute -left-10 top-24 glass-panel rounded-2xl px-6 py-4 animate-float-delayed hidden md:flex items-center gap-3 shadow-2xl border border-white/10 z-20 bg-panel/90">
-        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary"><i class="fa-solid fa-clapperboard"></i></div>
+      <!-- Readout badge -->
+      <div class="absolute -left-6 sm:-left-10 bottom-8 chart-panel rounded-xl px-5 py-3 hidden md:flex items-center gap-3 shadow-2xl z-20 border">
+        <div class="w-9 h-9 rounded-md bg-brass/15 flex items-center justify-center text-brass border border-brass/30"><i class="fa-solid fa-compass" aria-hidden="true"></i></div>
         <div>
-          <div class="text-sm font-bold text-white">Cinematic Engine</div>
-          <div class="text-xs text-muted">Watch the vision</div>
+          <div class="text-xs font-semibold text-paper eyebrow">Platform Preview</div>
+          <div class="text-xs text-muted">In active development</div>
         </div>
       </div>
     </div>
@@ -308,34 +304,35 @@
 </section>
 
 <!-- TRUST SECTION -->
-<section id="trust" class="py-16 px-6 lg:px-10 border-y border-white/5 bg-white/[0.01]">
+<section id="trust" class="py-16 px-6 lg:px-10 border-y border-paper/10 bg-paper/[0.015]">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-12 reveal">
-      <h2 class="font-display text-2xl md:text-3xl font-bold text-white/90">Built for professionals. <br class="sm:hidden" /><span class="text-muted">Not for selling immigration services.</span></h2>
+      <span class="text-xs eyebrow text-brass">Our Philosophy</span>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-paper mt-3">Built for professionals. <span class="text-muted">Not for selling immigration services.</span></h2>
     </div>
-    
+
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 reveal delay-100">
-      <div class="flex items-center gap-4 glass-panel p-5 rounded-2xl">
-        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-          <i class="fa-solid fa-scale-balanced text-secondary"></i>
+      <div class="flex items-center gap-4 chart-panel p-5 rounded-xl border">
+        <div class="w-10 h-10 rounded-md bg-paper/5 flex items-center justify-center shrink-0 border border-paper/10">
+          <i class="fa-solid fa-scale-balanced text-brass" aria-hidden="true"></i>
         </div>
         <span class="text-sm font-medium">Independent recommendations</span>
       </div>
-      <div class="flex items-center gap-4 glass-panel p-5 rounded-2xl">
-        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-          <i class="fa-solid fa-magnifying-glass-chart text-secondary"></i>
+      <div class="flex items-center gap-4 chart-panel p-5 rounded-xl border">
+        <div class="w-10 h-10 rounded-md bg-paper/5 flex items-center justify-center shrink-0 border border-paper/10">
+          <i class="fa-solid fa-magnifying-glass-chart text-teal" aria-hidden="true"></i>
         </div>
         <span class="text-sm font-medium">Transparent reasoning</span>
       </div>
-      <div class="flex items-center gap-4 glass-panel p-5 rounded-2xl">
-        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-          <i class="fa-solid fa-briefcase text-secondary"></i>
+      <div class="flex items-center gap-4 chart-panel p-5 rounded-xl border">
+        <div class="w-10 h-10 rounded-md bg-paper/5 flex items-center justify-center shrink-0 border border-paper/10">
+          <i class="fa-solid fa-briefcase text-brass" aria-hidden="true"></i>
         </div>
         <span class="text-sm font-medium">Career-first approach</span>
       </div>
-      <div class="flex items-center gap-4 glass-panel p-5 rounded-2xl">
-        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-          <i class="fa-solid fa-eye-slash text-secondary"></i>
+      <div class="flex items-center gap-4 chart-panel p-5 rounded-xl border">
+        <div class="w-10 h-10 rounded-md bg-paper/5 flex items-center justify-center shrink-0 border border-paper/10">
+          <i class="fa-solid fa-eye-slash text-teal" aria-hidden="true"></i>
         </div>
         <span class="text-sm font-medium">No hidden sales agenda</span>
       </div>
@@ -343,55 +340,58 @@
   </div>
 </section>
 
-<!-- THE PROBLEM SECTION (Bento Style) -->
+<!-- THE PROBLEM SECTION -->
 <section class="py-24 px-6 lg:px-10 relative">
   <div class="max-w-7xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-      <span class="text-sm font-bold tracking-[0.2em] text-secondary uppercase bg-secondary/10 px-4 py-1.5 rounded-full inline-block mb-4">The Status Quo</span>
-      <h2 class="font-display text-4xl lg:text-5xl font-bold mt-4 leading-tight">
-        Choosing a country shouldn't feel like <span class="gradient-text">gambling.</span>
+      <span class="text-xs eyebrow text-brass">The Status Quo</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold mt-4 leading-tight">
+        Choosing a country shouldn't feel like <span class="text-brass italic">gambling.</span>
       </h2>
     </div>
 
-    <!-- Bento Grid -->
     <div class="grid md:grid-cols-3 gap-6 auto-rows-fr">
-      <div class="spotlight-card reveal p-8 flex flex-col justify-between md:col-span-2">
-        <div class="spotlight-content">
-          <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">
-            <i class="fa-solid fa-comments text-xl text-white/80"></i>
+      <div class="chart-card reveal p-8 flex flex-col justify-between md:col-span-2 border">
+        <div>
+          <div class="card-index mb-5">§ 01 — CONFLICTING ADVICE</div>
+          <div class="w-12 h-12 rounded-lg bg-paper/5 flex items-center justify-center mb-6 border border-paper/10">
+            <i class="fa-solid fa-comments text-xl text-paper/80" aria-hidden="true"></i>
           </div>
-          <h3 class="text-2xl font-display font-bold mb-3 text-white">Different consultants tell you different things.</h3>
-          <p class="text-muted leading-relaxed max-w-md">Every agency pushes the country they partner with. Nothing is tailored to your unique professional footprint or long-term career goals.</p>
+          <h3 class="text-2xl font-display font-semibold mb-3 text-paper">Different consultants tell you different things.</h3>
+          <p class="text-muted leading-relaxed max-w-md">Every agency tends to favour the country it partners with. Little of it is tailored to your actual professional footprint or long-term goals.</p>
         </div>
       </div>
 
-      <div class="spotlight-card reveal delay-100 p-8 flex flex-col justify-between">
-        <div class="spotlight-content">
-          <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">
-            <i class="fa-solid fa-triangle-exclamation text-xl text-white/80"></i>
+      <div class="chart-card reveal delay-100 p-8 flex flex-col justify-between border">
+        <div>
+          <div class="card-index mb-5">§ 02 — UPFRONT RISK</div>
+          <div class="w-12 h-12 rounded-lg bg-paper/5 flex items-center justify-center mb-6 border border-paper/10">
+            <i class="fa-solid fa-triangle-exclamation text-xl text-paper/80" aria-hidden="true"></i>
           </div>
-          <h3 class="text-xl font-display font-bold mb-3 text-white">Spend lakhs before knowing the right pathway.</h3>
-          <p class="text-muted text-sm leading-relaxed">Professionals commit huge upfront fees for generic advice that frequently gets rejected.</p>
+          <h3 class="text-xl font-display font-semibold mb-3 text-paper">Spend lakhs before knowing the right pathway.</h3>
+          <p class="text-muted text-sm leading-relaxed">Professionals commit large upfront fees for generic advice that can still end in rejection.</p>
         </div>
       </div>
 
-      <div class="spotlight-card reveal delay-200 p-8 flex flex-col justify-between">
-        <div class="spotlight-content">
-          <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">
-            <i class="fa-solid fa-map-location-dot text-xl text-white/80"></i>
+      <div class="chart-card reveal delay-200 p-8 flex flex-col justify-between border">
+        <div>
+          <div class="card-index mb-5">§ 03 — NOISE</div>
+          <div class="w-12 h-12 rounded-lg bg-paper/5 flex items-center justify-center mb-6 border border-paper/10">
+            <i class="fa-solid fa-map-location-dot text-xl text-paper/80" aria-hidden="true"></i>
           </div>
-          <h3 class="text-xl font-display font-bold mb-3 text-white">Too much information. No clarity.</h3>
+          <h3 class="text-xl font-display font-semibold mb-3 text-paper">Too much information. No clarity.</h3>
           <p class="text-muted text-sm leading-relaxed">Forums, videos, and relatives share outdated experiences, leading to decision paralysis.</p>
         </div>
       </div>
 
-      <div class="spotlight-card reveal delay-300 p-8 flex flex-col justify-between md:col-span-2 bg-gradient-to-br from-white/5 to-primary/5">
-        <div class="spotlight-content">
-          <div class="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center mb-6 border border-secondary/30 shadow-[0_0_15px_rgba(139,92,246,0.3)]">
-            <i class="fa-solid fa-compass text-xl text-secondary"></i>
+      <div class="chart-card reveal delay-300 p-8 flex flex-col justify-between md:col-span-2 border bg-gradient-to-br from-paper/[0.03] to-brass/[0.04]">
+        <div>
+          <div class="card-index mb-5">§ 04 — THE GAP</div>
+          <div class="w-12 h-12 rounded-lg bg-brass/15 flex items-center justify-center mb-6 border border-brass/30">
+            <i class="fa-solid fa-compass text-xl text-brass" aria-hidden="true"></i>
           </div>
-          <h3 class="text-2xl font-display font-bold mb-3 text-white">No independent platform exists.</h3>
-          <p class="text-muted leading-relaxed max-w-md">Until now, there was no objective, data-backed tool built to help professionals make the right decision before investing their life savings.</p>
+          <h3 class="text-2xl font-display font-semibold mb-3 text-paper">No independent platform exists.</h3>
+          <p class="text-muted leading-relaxed max-w-md">Until now, there was no objective, data-backed tool built to help professionals decide before committing their savings.</p>
         </div>
       </div>
     </div>
@@ -399,139 +399,109 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works" class="py-24 px-6 lg:px-10 relative overflow-hidden border-t border-white/5">
-  <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-  
+<section id="how-it-works" class="py-24 px-6 lg:px-10 relative overflow-hidden border-t border-paper/10">
   <div class="max-w-7xl mx-auto relative z-10">
     <div class="text-center max-w-2xl mx-auto mb-20 reveal">
-      <h2 class="font-display text-4xl lg:text-5xl font-bold mt-4 leading-tight">How the <span class="gradient-text">Compass</span> works</h2>
+      <span class="text-xs eyebrow text-brass">The Process</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold mt-4 leading-tight">How the <span class="text-brass italic">Compass</span> works</h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-12 relative">
+      <div class="absolute top-10 left-0 w-full h-px bg-paper/10 hidden md:block"></div>
+
       <div class="reveal text-center relative group">
-        <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center font-display text-2xl font-bold text-white mb-8 relative z-10 border border-white/10 shadow-xl group-hover:scale-110 transition-transform duration-500 bg-panel/50 backdrop-blur-md">
-          01
-          <div class="absolute inset-0 rounded-2xl border border-secondary/50 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
-        </div>
-        <h3 class="text-xl font-display font-bold mb-3">Map Your Profile</h3>
+        <div class="w-20 h-20 mx-auto rounded-lg chart-panel flex items-center justify-center font-display text-2xl font-semibold text-brass mb-8 relative z-10 border shadow-xl">01</div>
+        <h3 class="text-xl font-display font-semibold mb-3">Map Your Profile</h3>
         <p class="text-muted leading-relaxed max-w-[260px] mx-auto">Complete a precise assessment of your professional skills, timeline, and lifestyle priorities.</p>
       </div>
 
       <div class="reveal delay-100 text-center relative group">
-        <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center font-display text-2xl font-bold text-white mb-8 relative z-10 border border-white/10 shadow-xl group-hover:scale-110 transition-transform duration-500 bg-panel/50 backdrop-blur-md">
-          02
-          <div class="absolute inset-0 rounded-2xl border border-primary/50 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
-        </div>
-        <h3 class="text-xl font-display font-bold mb-3">AI Engine Analyzes</h3>
-        <p class="text-muted leading-relaxed max-w-[260px] mx-auto">Our proprietary algorithm cross-references your profile against live global immigration and job market data.</p>
+        <div class="w-20 h-20 mx-auto rounded-lg chart-panel flex items-center justify-center font-display text-2xl font-semibold text-brass mb-8 relative z-10 border shadow-xl">02</div>
+        <h3 class="text-xl font-display font-semibold mb-3">The Engine Analyzes</h3>
+        <p class="text-muted leading-relaxed max-w-[260px] mx-auto">Your profile is cross-referenced against public immigration policy, labour-market, and salary data.</p>
       </div>
 
       <div class="reveal delay-200 text-center relative group">
-        <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center font-display text-2xl font-bold text-white mb-8 relative z-10 border border-white/10 shadow-xl group-hover:scale-110 transition-transform duration-500 bg-panel/50 backdrop-blur-md">
-          03
-          <div class="absolute inset-0 rounded-2xl border border-tertiary/50 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
-        </div>
-        <h3 class="text-xl font-display font-bold mb-3">Unlock Your Roadmap</h3>
-        <p class="text-muted leading-relaxed max-w-[260px] mx-auto">Receive a definitive country recommendation and a step-by-step action plan to execute your move.</p>
+        <div class="w-20 h-20 mx-auto rounded-lg chart-panel flex items-center justify-center font-display text-2xl font-semibold text-brass mb-8 relative z-10 border shadow-xl">03</div>
+        <h3 class="text-xl font-display font-semibold mb-3">Unlock Your Roadmap</h3>
+        <p class="text-muted leading-relaxed max-w-[260px] mx-auto">Receive a ranked country recommendation and a step-by-step plan to act on it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES SECTION (Reordered) -->
-<section id="features" class="py-24 px-6 lg:px-10 border-t border-white/5">
+<!-- FEATURES SECTION -->
+<section id="features" class="py-24 px-6 lg:px-10 border-t border-paper/10">
   <div class="max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-      <h2 class="font-display text-4xl lg:text-5xl font-bold leading-tight mb-6">Everything you need to <br/><span class="gradient-text">make the right move</span></h2>
+      <span class="text-xs eyebrow text-brass">The Platform</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold leading-tight mt-4 mb-6">Everything you need to <br/><span class="text-brass italic">make the right move</span></h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
-      
-      <!-- 1. Country Recommendation -->
-      <div class="spotlight-card reveal md:col-span-2 p-8 flex flex-col justify-center">
-        <div class="spotlight-content flex items-start gap-6">
-          <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-            <i class="fa-solid fa-earth-europe text-2xl text-primary"></i>
+
+      <div class="chart-card reveal md:col-span-2 p-8 flex flex-col justify-center border">
+        <div class="flex items-start gap-6">
+          <div class="w-14 h-14 rounded-lg bg-paper/5 flex items-center justify-center shrink-0 border border-paper/10">
+            <i class="fa-solid fa-earth-europe text-2xl text-brass" aria-hidden="true"></i>
           </div>
           <div>
-            <h3 class="text-2xl font-display font-bold mb-3">Country Recommendation</h3>
-            <p class="text-muted leading-relaxed">Stop guessing. Get clear, ranked country matches based strictly on where your career has the highest demand and earning potential.</p>
+            <h3 class="text-2xl font-display font-semibold mb-3">Country Recommendation</h3>
+            <p class="text-muted leading-relaxed">Stop guessing. Get clear, ranked country matches based on where your career has the strongest demand and earning potential.</p>
           </div>
         </div>
       </div>
 
-      <!-- 2. Career Roadmap -->
-      <div class="spotlight-card reveal delay-100 p-8 flex flex-col justify-center bg-gradient-to-br from-secondary/10 to-transparent border-secondary/20">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-route text-2xl text-secondary mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Career Roadmap</h3>
-          <p class="text-muted text-sm">A sequenced action plan from decision to departure.</p>
-        </div>
+      <div class="chart-card reveal delay-100 p-8 flex flex-col justify-center border bg-gradient-to-br from-teal/10 to-transparent">
+        <i class="fa-solid fa-route text-2xl text-teal mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Career Roadmap</h3>
+        <p class="text-muted text-sm">A sequenced action plan from decision to departure.</p>
       </div>
 
-      <!-- 3. Salary Prediction -->
-      <div class="spotlight-card reveal p-8 flex flex-col justify-center">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-sack-dollar text-2xl text-tertiary mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Salary Prediction</h3>
-          <p class="text-muted text-sm">See accurate salary predictions adjusted for local cost of living.</p>
-        </div>
+      <div class="chart-card reveal p-8 flex flex-col justify-center border">
+        <i class="fa-solid fa-sack-dollar text-2xl text-brass mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Salary Prediction</h3>
+        <p class="text-muted text-sm">See salary ranges adjusted for local cost of living.</p>
       </div>
 
-      <!-- 4. Visa Path -->
-      <div class="spotlight-card reveal delay-100 p-8 flex flex-col justify-center">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-passport text-2xl text-white/80 mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Visa Path</h3>
-          <p class="text-muted text-sm">Understand the exact visas you qualify for upfront.</p>
-        </div>
+      <div class="chart-card reveal delay-100 p-8 flex flex-col justify-center border">
+        <i class="fa-solid fa-passport text-2xl text-paper/80 mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Visa Path</h3>
+        <p class="text-muted text-sm">Understand which visas you're likely to qualify for, upfront.</p>
       </div>
 
-      <!-- 5. Risk Analysis -->
-      <div class="spotlight-card reveal delay-200 p-8 flex flex-col justify-center">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-shield-heart text-2xl text-white/80 mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Risk Analysis</h3>
-          <p class="text-muted text-sm">Know the hurdles before you jump. Objective barrier assessments.</p>
-        </div>
+      <div class="chart-card reveal delay-200 p-8 flex flex-col justify-center border">
+        <i class="fa-solid fa-shield-heart text-2xl text-paper/80 mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Risk Analysis</h3>
+        <p class="text-muted text-sm">Know the hurdles before you jump — an honest barrier assessment.</p>
       </div>
 
-      <!-- 6. Cost Estimate -->
-      <div class="spotlight-card reveal p-8 flex flex-col justify-center">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-coins text-2xl text-white/80 mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Cost Estimate</h3>
-          <p class="text-muted text-sm">Transparent estimates of the exact cash you need to relocate.</p>
-        </div>
+      <div class="chart-card reveal p-8 flex flex-col justify-center border">
+        <i class="fa-solid fa-coins text-2xl text-paper/80 mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Cost Estimate</h3>
+        <p class="text-muted text-sm">A transparent estimate of what relocating will actually cost.</p>
       </div>
 
-      <!-- 7. Timeline -->
-      <div class="spotlight-card reveal delay-100 p-8 flex flex-col justify-center">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-clock text-2xl text-white/80 mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Timeline</h3>
-          <p class="text-muted text-sm">Realistic timeframe expectations for processing and moving.</p>
-        </div>
+      <div class="chart-card reveal delay-100 p-8 flex flex-col justify-center border">
+        <i class="fa-solid fa-clock text-2xl text-paper/80 mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Timeline</h3>
+        <p class="text-muted text-sm">Realistic timeframes for processing and moving.</p>
       </div>
 
-      <!-- 8. Skills Gap Analysis -->
-      <div class="spotlight-card reveal delay-200 p-8 flex flex-col justify-center">
-        <div class="spotlight-content">
-          <i class="fa-solid fa-chart-pie text-2xl text-white/80 mb-4"></i>
-          <h3 class="text-xl font-display font-bold mb-2">Skills Gap Analysis</h3>
-          <p class="text-muted text-sm">Identify exactly what local employers want that you are missing.</p>
-        </div>
+      <div class="chart-card reveal delay-200 p-8 flex flex-col justify-center border">
+        <i class="fa-solid fa-chart-pie text-2xl text-paper/80 mb-4" aria-hidden="true"></i>
+        <h3 class="text-xl font-display font-semibold mb-2">Skills Gap Analysis</h3>
+        <p class="text-muted text-sm">See exactly what local employers want that you're missing.</p>
       </div>
 
-      <!-- 9. Career Score -->
-      <div class="spotlight-card reveal md:col-span-3 p-8 flex flex-col sm:flex-row items-center justify-between border-t border-white/10">
-        <div class="spotlight-content flex items-center gap-6">
-          <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-            <i class="fa-solid fa-gauge-high text-2xl text-primary"></i>
+      <div class="chart-card reveal md:col-span-3 p-8 flex flex-col sm:flex-row items-center justify-between border">
+        <div class="flex items-center gap-6">
+          <div class="w-14 h-14 rounded-full bg-paper/5 flex items-center justify-center shrink-0 border border-paper/10">
+            <i class="fa-solid fa-gauge-high text-2xl text-brass" aria-hidden="true"></i>
           </div>
           <div>
-            <h3 class="text-2xl font-display font-bold mb-1">Career Score</h3>
-            <p class="text-muted">A single, honest metric defining how strong your profile is globally.</p>
+            <h3 class="text-2xl font-display font-semibold mb-1">Career Score</h3>
+            <p class="text-muted">A single, honest metric for how strong your profile is globally.</p>
           </div>
         </div>
       </div>
@@ -541,80 +511,74 @@
 </section>
 
 <!-- SAMPLE REPORT SECTION -->
-<section id="sample-report" class="py-24 px-6 lg:px-10 border-y border-white/5 bg-white/[0.01] relative overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.05)_0%,transparent_70%)] pointer-events-none"></div>
-  
+<section id="sample-report" class="py-24 px-6 lg:px-10 border-y border-paper/10 bg-paper/[0.015] relative overflow-hidden">
   <div class="max-w-5xl mx-auto relative z-10">
     <div class="text-center mb-16 reveal">
-      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">See The Decision Report Before You Join</h2>
-      <p class="text-muted text-lg max-w-2xl mx-auto">No generic PDFs. You receive a dynamic, personalized intelligence briefing structured to give you absolute clarity.</p>
+      <span class="text-xs eyebrow text-brass">The Output</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold mb-4 mt-4">See The Decision Report Before You Join</h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">No generic PDFs. A dynamic, personalized briefing structured to give you real clarity.</p>
     </div>
 
-    <div class="glass-panel rounded-3xl border border-white/10 shadow-2xl p-6 sm:p-10 reveal delay-100 relative overflow-hidden">
-      <!-- Simulated Header -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 pb-6 border-b border-white/10 gap-4">
+    <div class="chart-panel rounded-2xl border shadow-2xl p-6 sm:p-10 reveal delay-100 relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 pb-6 border-b border-paper/10 gap-4">
         <div>
-          <h3 class="font-display text-2xl font-bold">Career Assessment Report</h3>
-          <p class="text-sm text-muted">Generated for: Senior Software Engineer</p>
+          <div class="text-xs eyebrow text-brass mb-2">Illustrative Example — Not A Real User Report</div>
+          <h3 class="font-display text-2xl font-semibold">Career Assessment Report</h3>
+          <p class="text-sm text-muted">Example profile: Senior Software Engineer</p>
         </div>
-        <div class="px-4 py-2 bg-secondary/10 border border-secondary/20 rounded-full text-sm font-semibold text-secondary self-start md:self-auto">
+        <div class="px-4 py-2 bg-teal/15 border border-teal/30 rounded-full text-sm font-semibold text-teal self-start md:self-auto">
           Status: Ready to Execute
         </div>
       </div>
 
-      <!-- Simulated Grid -->
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Main Match -->
-        <div class="md:col-span-2 bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col justify-center">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Best Country Match</div>
+        <div class="md:col-span-2 bg-paper/5 rounded-xl p-6 border border-paper/10 flex flex-col justify-center">
+          <div class="text-xs eyebrow text-muted mb-4">Best Country Match</div>
           <div class="flex items-center gap-6">
-            <span class="text-5xl drop-shadow-lg">🇩🇪</span>
+            <span class="text-5xl drop-shadow-lg" role="img" aria-label="Germany flag">🇩🇪</span>
             <div>
-              <div class="font-display text-4xl font-bold text-white mb-1">Germany</div>
-              <div class="text-primary font-medium text-sm">EU Blue Card Pathway Eligible</div>
+              <div class="font-display text-4xl font-semibold text-paper mb-1">Germany</div>
+              <div class="text-brass font-medium text-sm">EU Blue Card Pathway Eligible</div>
             </div>
           </div>
         </div>
 
-        <!-- Score -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col justify-center items-center text-center">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-2">Compatibility</div>
-          <div class="font-display text-5xl font-black gradient-text">94%</div>
+        <div class="bg-paper/5 rounded-xl p-6 border border-paper/10 flex flex-col justify-center items-center text-center">
+          <div class="text-xs eyebrow text-muted mb-2">Compatibility</div>
+          <div class="font-display text-5xl font-bold text-brass">94%</div>
         </div>
 
-        <!-- Details -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/5">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-2">Expected Salary</div>
-          <div class="font-display text-2xl font-bold text-white">€65k - €85k</div>
-          <div class="text-xs text-muted mt-1">High demand in Tech hubs</div>
+        <div class="bg-paper/5 rounded-xl p-6 border border-paper/10">
+          <div class="text-xs eyebrow text-muted mb-2">Expected Salary</div>
+          <div class="font-display text-2xl font-semibold text-paper">€65k – €85k</div>
+          <div class="text-xs text-muted mt-1">High demand in tech hubs</div>
         </div>
 
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/5">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-2">Timeline</div>
-          <div class="font-display text-2xl font-bold text-white">8 - 11 Months</div>
+        <div class="bg-paper/5 rounded-xl p-6 border border-paper/10">
+          <div class="text-xs eyebrow text-muted mb-2">Timeline</div>
+          <div class="font-display text-2xl font-semibold text-paper">8 – 11 Months</div>
           <div class="text-xs text-muted mt-1">From application to landing</div>
         </div>
 
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/5">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-2">Top Risk</div>
-          <div class="font-display text-xl font-bold text-white">Language Barrier</div>
+        <div class="bg-paper/5 rounded-xl p-6 border border-paper/10">
+          <div class="text-xs eyebrow text-muted mb-2">Top Risk</div>
+          <div class="font-display text-xl font-semibold text-paper">Language Barrier</div>
           <div class="text-xs text-muted mt-1">B1 German highly recommended</div>
         </div>
 
-        <!-- Action Plan -->
-        <div class="md:col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5 mt-2">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-4">Action Plan Preview</div>
+        <div class="md:col-span-3 bg-paper/5 rounded-xl p-6 border border-paper/10 mt-2">
+          <div class="text-xs eyebrow text-muted mb-4">Action Plan Preview</div>
           <div class="flex flex-col gap-4">
-            <div class="flex items-center gap-4 bg-bg/50 p-4 rounded-xl border border-white/5">
-              <div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-sm">1</div>
+            <div class="flex items-center gap-4 bg-bg/50 p-4 rounded-lg border border-paper/10">
+              <div class="w-8 h-8 rounded-full bg-brass/20 flex items-center justify-center text-brass font-bold text-sm shrink-0">1</div>
               <div class="text-sm font-medium">Verify degree alignment via ZAB database.</div>
             </div>
-            <div class="flex items-center gap-4 bg-bg/50 p-4 rounded-xl border border-white/5">
-              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-muted font-bold text-sm">2</div>
+            <div class="flex items-center gap-4 bg-bg/50 p-4 rounded-lg border border-paper/10">
+              <div class="w-8 h-8 rounded-full bg-paper/5 flex items-center justify-center text-muted font-bold text-sm shrink-0">2</div>
               <div class="text-sm text-muted">Format CV to standard Europass guidelines.</div>
             </div>
-            <div class="flex items-center gap-4 bg-bg/50 p-4 rounded-xl border border-white/5">
-              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-muted font-bold text-sm">3</div>
+            <div class="flex items-center gap-4 bg-bg/50 p-4 rounded-lg border border-paper/10">
+              <div class="w-8 h-8 rounded-full bg-paper/5 flex items-center justify-center text-muted font-bold text-sm shrink-0">3</div>
               <div class="text-sm text-muted">Begin targeted outreach for English-speaking tech roles in Berlin/Munich.</div>
             </div>
           </div>
@@ -625,28 +589,38 @@
 </section>
 
 <!-- SOCIAL PROOF SECTION -->
-<section id="social-proof" class="py-24 px-6 lg:px-10 border-b border-white/5 bg-white/[0.01]">
+<section id="social-proof" class="py-24 px-6 lg:px-10 border-b border-paper/10">
   <div class="max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-4">Why professionals are joining</h2>
+      <span class="text-xs eyebrow text-brass">Early Feedback</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold mb-4 mt-4">What professionals are telling us</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="spotlight-card reveal p-8">
-        <div class="spotlight-content h-full flex flex-col justify-center">
-          <i class="fa-solid fa-quote-left text-2xl text-secondary mb-4 opacity-50"></i>
-          <p class="text-white text-lg leading-relaxed font-medium">"I've spoken to multiple consultants and still don't know whether Germany or Canada is right for me."</p>
+      <div class="chart-card reveal p-8 border">
+        <div class="h-full flex flex-col justify-between">
+          <div>
+            <i class="fa-solid fa-quote-left text-xl text-brass mb-4 opacity-60" aria-hidden="true"></i>
+            <p class="text-paper text-lg leading-relaxed font-medium">"I've spoken to multiple consultants and still don't know whether Germany or Canada is right for me."</p>
+          </div>
+          <p class="text-xs eyebrow text-muted mt-6">— Beta feedback, Data Analyst</p>
         </div>
       </div>
-      <div class="spotlight-card reveal delay-100 p-8">
-        <div class="spotlight-content h-full flex flex-col justify-center">
-          <i class="fa-solid fa-quote-left text-2xl text-primary mb-4 opacity-50"></i>
-          <p class="text-white text-lg leading-relaxed font-medium">"I don't need another sales pitch. I need clarity."</p>
+      <div class="chart-card reveal delay-100 p-8 border">
+        <div class="h-full flex flex-col justify-between">
+          <div>
+            <i class="fa-solid fa-quote-left text-xl text-teal mb-4 opacity-60" aria-hidden="true"></i>
+            <p class="text-paper text-lg leading-relaxed font-medium">"I don't need another sales pitch. I need clarity."</p>
+          </div>
+          <p class="text-xs eyebrow text-muted mt-6">— Beta feedback, Product Manager</p>
         </div>
       </div>
-      <div class="spotlight-card reveal delay-200 p-8">
-        <div class="spotlight-content h-full flex flex-col justify-center">
-          <i class="fa-solid fa-quote-left text-2xl text-tertiary mb-4 opacity-50"></i>
-          <p class="text-white text-lg leading-relaxed font-medium">"This is exactly what I wish existed before spending money on consultations."</p>
+      <div class="chart-card reveal delay-200 p-8 border">
+        <div class="h-full flex flex-col justify-between">
+          <div>
+            <i class="fa-solid fa-quote-left text-xl text-brass mb-4 opacity-60" aria-hidden="true"></i>
+            <p class="text-paper text-lg leading-relaxed font-medium">"This is exactly what I wish existed before spending money on consultations."</p>
+          </div>
+          <p class="text-xs eyebrow text-muted mt-6">— Beta feedback, Mechanical Engineer</p>
         </div>
       </div>
     </div>
@@ -654,60 +628,119 @@
 </section>
 
 <!-- FOUNDER STORY SECTION -->
-<section id="founder-story" class="py-24 px-6 lg:px-10 border-b border-white/5 relative">
+<section id="founder-story" class="py-24 px-6 lg:px-10 border-b border-paper/10 relative">
   <div class="max-w-3xl mx-auto text-center reveal">
-    <h2 class="font-display text-3xl lg:text-4xl font-bold mb-10">Why We Built Abroad Career</h2>
+    <span class="text-xs eyebrow text-brass">Why We Built This</span>
+    <h2 class="font-display text-3xl lg:text-4xl font-semibold mb-10 mt-4">Why We Built Abroad Career</h2>
     <div class="text-muted text-lg leading-relaxed space-y-6">
       <p>We noticed a pattern.</p>
       <p>Professionals weren't lacking information.<br>They were drowning in it.</p>
       <p>Different consultants gave different answers.<br>YouTube said one thing.<br>Forums said another.</p>
       <p>Yet nobody was helping people answer one simple question:</p>
-      <p class="text-xl text-white font-display font-bold py-4">"Which country is actually right for me?"</p>
-      <p>Abroad Career was created to provide independent, data-backed career guidance before anyone spends money on the wrong pathway.</p>
+      <p class="text-xl text-paper font-display font-semibold py-4">"Which country is actually right for me?"</p>
+      <p>Abroad Career was built to give independent, data-grounded career guidance — before anyone spends money on the wrong pathway.</p>
     </div>
   </div>
 </section>
 
-<!-- EARLY ACCESS FORM (Premium UI) -->
-<section id="early-access" class="py-32 px-6 lg:px-10 relative flex items-center justify-center">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] pointer-events-none"></div>
-  
-  <div class="max-w-2xl w-full mx-auto relative z-10 reveal">
-    <div class="text-center mb-10">
-      <h2 class="font-display text-4xl lg:text-5xl font-bold leading-tight mb-4">Secure your spot.</h2>
-      <p class="text-muted text-lg">We are opening the platform to the first 1,000 professionals. Join the waitlist to get early access.</p>
+<!-- FAQ SECTION -->
+<section id="faq" class="py-24 px-6 lg:px-10 border-b border-paper/10 bg-paper/[0.015]">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <span class="text-xs eyebrow text-brass">Before You Ask</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold mb-4 mt-4">Straight answers, upfront</h2>
+      <p class="text-muted text-lg">The kind of questions we'd want answered before handing over our email.</p>
     </div>
 
-    <div class="glass-panel rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
-      <!-- Glow decoration -->
-      <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/30 blur-[60px] rounded-full"></div>
-      
-      <!-- Inline error message container -->
-      <div id="formError" class="hidden mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm relative z-10"></div>
+    <div class="flex flex-col gap-4 reveal delay-100" id="faqList">
+      <div class="accordion-item chart-card border">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left" aria-expanded="false">
+          <span class="font-display text-lg font-semibold text-paper">Is Abroad Career actually free to use?</span>
+          <i class="fa-solid fa-chevron-down chevron text-muted shrink-0" aria-hidden="true"></i>
+        </button>
+        <div class="accordion-panel px-6">
+          <p class="text-muted leading-relaxed pb-6">Early access to the core country-matching report is free. If we ever introduce paid tiers for deeper features, existing early-access members will be told clearly, in advance — nothing is charged silently.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item chart-card border">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left" aria-expanded="false">
+          <span class="font-display text-lg font-semibold text-paper">How is this different from an immigration consultant?</span>
+          <i class="fa-solid fa-chevron-down chevron text-muted shrink-0" aria-hidden="true"></i>
+        </button>
+        <div class="accordion-panel px-6">
+          <p class="text-muted leading-relaxed pb-6">We don't earn a commission for pointing you toward any particular country, university, or visa route. Our only job is to give you a clear, honest read on your options — you're free to take that anywhere, including to a licensed consultant, for execution.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item chart-card border">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left" aria-expanded="false">
+          <span class="font-display text-lg font-semibold text-paper">What happens to my data?</span>
+          <i class="fa-solid fa-chevron-down chevron text-muted shrink-0" aria-hidden="true"></i>
+        </button>
+        <div class="accordion-panel px-6">
+          <p class="text-muted leading-relaxed pb-6">We use your details only to build your assessment and to contact you about early access. We don't sell your information to consultants, agents, or advertisers.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item chart-card border">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left" aria-expanded="false">
+          <span class="font-display text-lg font-semibold text-paper">Is this legal or immigration advice?</span>
+          <i class="fa-solid fa-chevron-down chevron text-muted shrink-0" aria-hidden="true"></i>
+        </button>
+        <div class="accordion-panel px-6">
+          <p class="text-muted leading-relaxed pb-6">No. Abroad Career gives directional, data-informed guidance to help you narrow your options. Always confirm visa, legal, and tax requirements with a licensed professional or the relevant government's official sources before making final decisions.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item chart-card border">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between gap-4 p-6 text-left" aria-expanded="false">
+          <span class="font-display text-lg font-semibold text-paper">Which countries and careers do you cover?</span>
+          <i class="fa-solid fa-chevron-down chevron text-muted shrink-0" aria-hidden="true"></i>
+        </button>
+        <div class="accordion-panel px-6">
+          <p class="text-muted leading-relaxed pb-6">We're launching with the most common destinations for Indian professionals — including Germany, Canada, and Australia — across major white-collar career tracks, with more being added as the platform grows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EARLY ACCESS FORM -->
+<section id="early-access" class="py-32 px-6 lg:px-10 relative flex items-center justify-center">
+  <div class="max-w-2xl w-full mx-auto relative z-10 reveal">
+    <div class="text-center mb-10">
+      <span class="text-xs eyebrow text-brass">Get Early Access</span>
+      <h2 class="font-display text-4xl lg:text-5xl font-semibold leading-tight mb-4 mt-4">Secure your spot.</h2>
+      <p class="text-muted text-lg">We're opening the platform to the first 1,000 professionals. Join the waitlist for early access.</p>
+    </div>
+
+    <div class="chart-panel rounded-2xl p-8 md:p-12 border shadow-2xl relative overflow-hidden">
+      <div id="formError" class="hidden mb-6 p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm relative z-10"></div>
 
       <form id="earlyAccessForm" class="relative z-10">
         <div id="formFields" class="flex flex-col gap-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-2">
-              <label class="text-xs font-semibold tracking-wider text-muted uppercase">Full Name</label>
-              <input required id="name" type="text" placeholder="e.g. Ananya Sharma" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
+              <label for="name" class="text-xs eyebrow text-muted">Full Name</label>
+              <input required id="name" name="name" type="text" placeholder="e.g. Ananya Sharma" class="w-full bg-paper/[0.03] border border-paper/15 rounded-lg px-5 py-4 text-paper placeholder:text-paper/25 focus:border-brass focus:bg-paper/[0.05] outline-none transition-all" />
             </div>
             <div class="space-y-2">
-              <label class="text-xs font-semibold tracking-wider text-muted uppercase">Email Address</label>
-              <input required id="email" type="email" placeholder="you@company.com" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
+              <label for="email" class="text-xs eyebrow text-muted">Email Address</label>
+              <input required id="email" name="email" type="email" placeholder="you@company.com" class="w-full bg-paper/[0.03] border border-paper/15 rounded-lg px-5 py-4 text-paper placeholder:text-paper/25 focus:border-brass focus:bg-paper/[0.05] outline-none transition-all" />
             </div>
-          </div>
-          
-          <div class="space-y-2">
-            <label class="text-xs font-semibold tracking-wider text-muted uppercase">Current Profession</label>
-            <input required id="profession" type="text" placeholder="e.g. Senior Software Engineer" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all" />
           </div>
 
           <div class="space-y-2">
-            <label class="text-xs font-semibold tracking-wider text-muted uppercase">What is your biggest challenge right now?</label>
+            <label for="profession" class="text-xs eyebrow text-muted">Current Profession</label>
+            <input required id="profession" name="profession" type="text" placeholder="e.g. Senior Software Engineer" class="w-full bg-paper/[0.03] border border-paper/15 rounded-lg px-5 py-4 text-paper placeholder:text-paper/25 focus:border-brass focus:bg-paper/[0.05] outline-none transition-all" />
+          </div>
+
+          <div class="space-y-2">
+            <label for="challenge" class="text-xs eyebrow text-muted">What is your biggest challenge right now?</label>
             <div class="relative">
-              <select required id="challenge" class="w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/20 focus:border-primary focus:bg-white/[0.06] focus:ring-1 focus:ring-primary outline-none transition-all appearance-none cursor-pointer">
-                <option value="" disabled selected class="text-muted">Select your biggest hurdle</option>
+              <select required id="challenge" name="challenge" class="w-full bg-paper/[0.03] border border-paper/15 rounded-lg px-5 py-4 text-paper focus:border-brass focus:bg-paper/[0.05] outline-none transition-all appearance-none cursor-pointer">
+                <option value="" disabled selected>Select your biggest hurdle</option>
                 <option value="Choosing the right country">Choosing the right country</option>
                 <option value="Understanding eligibility">Understanding eligibility</option>
                 <option value="Finding sponsored jobs">Finding sponsored jobs</option>
@@ -716,28 +749,25 @@
                 <option value="Documentation process">Documentation process</option>
                 <option value="Other">Other</option>
               </select>
-              <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
-                <i class="fa-solid fa-chevron-down text-sm"></i>
+              <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-paper/50">
+                <i class="fa-solid fa-chevron-down text-sm" aria-hidden="true"></i>
               </div>
             </div>
           </div>
 
-          <button type="submit" id="submitBtn" class="btn-shine animate-shine w-full text-white font-bold text-lg py-5 rounded-xl mt-4 shadow-[0_0_40px_rgba(59,130,246,0.3)] cursor-pointer">
+          <button type="submit" id="submitBtn" class="btn-brass w-full font-bold text-lg py-5 rounded-lg mt-4 cursor-pointer">
             Join the Waitlist
           </button>
-          
-          <div class="text-center text-xs text-muted/70 flex items-center justify-center gap-2">
-            <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-            <span class="font-medium">Early Access Applications Open</span>
-          </div>
+
+          <p class="text-center text-xs text-muted">We only use your details to contact you about early access. No spam, no data sharing.</p>
         </div>
 
         <!-- Success State -->
         <div id="successState" class="hidden flex-col items-center justify-center text-center py-10 opacity-0 transition-opacity duration-500">
-          <div class="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6 border border-green-500/20">
-            <i class="fa-solid fa-check text-4xl text-green-400"></i>
+          <div class="w-20 h-20 rounded-full bg-teal/15 flex items-center justify-center mb-6 border border-teal/30">
+            <i class="fa-solid fa-check text-4xl text-teal" aria-hidden="true"></i>
           </div>
-          <h3 class="font-display text-3xl font-bold mb-3">You're officially on the waitlist!</h3>
+          <h3 class="font-display text-3xl font-semibold mb-3">You're officially on the waitlist!</h3>
           <p class="text-muted text-lg">Keep an eye on your inbox. We'll notify you when Abroad Career launches.</p>
         </div>
       </form>
@@ -746,39 +776,69 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/10 bg-black/20 pt-16 pb-8 px-6 lg:px-10">
+<footer class="border-t border-paper/10 bg-black/20 pt-16 pb-8 px-6 lg:px-10">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
     <a href="#home" class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-        <i class="fa-solid fa-compass text-white text-xs"></i>
+      <div class="w-8 h-8 rounded-md bg-brass flex items-center justify-center">
+        <i class="fa-solid fa-compass text-bg text-xs" aria-hidden="true"></i>
       </div>
-      <span class="font-display font-bold tracking-[0.15em] text-sm text-white">ABROAD CAREER</span>
+      <span class="font-display font-bold tracking-[0.15em] text-sm text-paper">ABROAD CAREER</span>
     </a>
 
     <p class="text-sm text-muted">Empowering global careers through independent data.</p>
 
     <div class="flex items-center gap-6 text-muted">
-      <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
-      <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+      <a href="#" class="hover:text-paper transition-colors" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-xl" aria-hidden="true"></i></a>
+      <a href="#" class="hover:text-paper transition-colors" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter text-xl" aria-hidden="true"></i></a>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted/50">
-    <p>© 2026 Abroad Career. All rights reserved.</p>
+  <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-paper/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted/70">
+    <p>© <span id="year"></span> Abroad Career. All rights reserved.</p>
     <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-      <a href="#" class="hover:text-white transition-colors">About</a>
-      <a href="#" class="hover:text-white transition-colors">Roadmap</a>
-      <a href="#" class="hover:text-white transition-colors">Contact</a>
-      <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-      <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+      <a href="#" class="hover:text-paper transition-colors">About</a>
+      <a href="#" class="hover:text-paper transition-colors">Roadmap</a>
+      <a href="#" class="hover:text-paper transition-colors">Contact</a>
+      <a href="#" class="hover:text-paper transition-colors">Privacy Policy</a>
+      <a href="#" class="hover:text-paper transition-colors">Terms of Service</a>
     </div>
   </div>
 </footer>
+
+</main>
 
 <!-- Supabase JavaScript SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <!-- SCRIPTS -->
 <script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Compass ticks (generated for accuracy)
+  (function drawCompass() {
+    const g = document.getElementById('compassTicks');
+    if (!g) return;
+    const cx = 200, cy = 200;
+    for (let deg = 0; deg < 360; deg += 15) {
+      const rad = (deg - 90) * Math.PI / 180;
+      const major = deg % 45 === 0;
+      const rOuter = 178;
+      const rInner = major ? 158 : 168;
+      const x1 = cx + rOuter * Math.cos(rad);
+      const y1 = cy + rOuter * Math.sin(rad);
+      const x2 = cx + rInner * Math.cos(rad);
+      const y2 = cy + rInner * Math.sin(rad);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1.toFixed(1));
+      line.setAttribute('y1', y1.toFixed(1));
+      line.setAttribute('x2', x2.toFixed(1));
+      line.setAttribute('y2', y2.toFixed(1));
+      line.setAttribute('stroke', major ? 'rgba(192,138,52,0.55)' : 'rgba(237,231,217,0.15)');
+      line.setAttribute('stroke-width', major ? '1.5' : '1');
+      g.appendChild(line);
+    }
+  })();
+
   // Navbar Scroll Effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -790,8 +850,16 @@
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!isHidden));
+    menuBtn.innerHTML = isHidden ? '<i class="fa-solid fa-bars" aria-hidden="true"></i>' : '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
   });
 
   // Typing Effect
@@ -799,7 +867,7 @@
   const line2 = "Following The Wrong Path Abroad.";
   const el1 = document.getElementById('typedLine1');
   const el2 = document.getElementById('typedLine2');
-  
+
   function typeText(el, text, speed, callback) {
     let i = 0;
     (function step() {
@@ -810,7 +878,7 @@
       } else if (callback) callback();
     })();
   }
-  
+
   setTimeout(() => {
     typeText(el1, line1, 50, () => {
       setTimeout(() => typeText(el2, line2, 40), 300);
@@ -826,39 +894,31 @@
       }
     });
   }, { threshold: 0.1 });
-  
+
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Counters
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const target = +entry.target.dataset.target;
-        const start = performance.now();
-        const duration = 2000;
-        
-        function update(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const easeOutQuint = 1 - Math.pow(1 - progress, 5);
-          entry.target.textContent = Math.floor(easeOutQuint * target);
-          if (progress < 1) requestAnimationFrame(update);
+  // FAQ Accordion
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const panel = item.querySelector('.accordion-panel');
+    trigger.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.accordion-item.active').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('active');
+          other.querySelector('.accordion-panel').style.maxHeight = null;
+          other.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
         }
-        requestAnimationFrame(update);
-        counterObserver.unobserve(entry.target);
+      });
+      if (isActive) {
+        item.classList.remove('active');
+        panel.style.maxHeight = null;
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('active');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        trigger.setAttribute('aria-expanded', 'true');
       }
-    });
-  });
-  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-
-  // Spotlight Effect for Cards
-  const cards = document.querySelectorAll('.spotlight-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
     });
   });
 
@@ -866,10 +926,7 @@
   const supabaseUrl = "https://qpnygezdhmzhwsgpfleh.supabase.co";
   const supabaseKey = "sb_publishable_DPAyuzmWDYi5wZWAcLiVkA_Pfbwcn42";
 
-  const supabaseClient = supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-  );
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
   // Form submission & handling
   const form = document.getElementById('earlyAccessForm');
@@ -879,45 +936,31 @@
   const submitBtn = document.getElementById('submitBtn');
 
   form.addEventListener('submit', async (e) => {
-    // Prevent page refresh
     e.preventDefault();
-    
-    // Hide any previous errors
+
     formError.classList.add('hidden');
     formError.textContent = '';
 
-    // Collect field values
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const profession = document.getElementById('profession').value.trim();
     const challenge = document.getElementById('challenge').value;
 
-    // Loading state: disable button and show loading text
     const originalBtnText = submitBtn.textContent;
     submitBtn.textContent = 'Submitting...';
     submitBtn.disabled = true;
 
     try {
-      // Insert submission data into Supabase waitlist table
       const { data, error } = await supabaseClient
         .from("waitlist")
-        .insert([
-          {
-            name,
-            email,
-            profession,
-            challenge
-          }
-        ]);
+        .insert([{ name, email, profession, challenge }]);
 
       if (error) {
         throw error;
       }
 
-      // Success handling: log successful insert
       console.log("Waitlist signup successful", data);
 
-      // Success handling: hide form fields and show success state
       formFields.style.opacity = '0';
       setTimeout(() => {
         formFields.classList.add('hidden');
@@ -928,16 +971,13 @@
         }, 50);
       }, 300);
 
-      // Reset form fields
       form.reset();
 
     } catch (err) {
-      // Error handling: log insert error and display clean inline error message
       console.error("Waitlist signup failed", err);
       formError.textContent = 'Something went wrong. Please try again.';
       formError.classList.remove('hidden');
     } finally {
-      // Restore button text and state after completion
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;
     }
